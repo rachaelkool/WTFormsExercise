@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Edit Pet Form{% endblock %}
+{% block content %}
+
+<h2>{{pet.name}}</h2>
+
+{% if pet.photo_url %}
+<img class="img-fluid" src="{{pet.photo_url}}">
+{% endif %}
+
+<form method="POST">
+    {{form.hidden_tag()}}
+    {% for field in form if field.widget.input_type != 'hidden'%}
+    
+    <div class='input-group-prepend'>
+        {{field.label(class_="mt-3 mr-2")}}
+        {{field(class_="input-group-text mt-3 mr-2")}}
+    </div>
+    {% endfor %}
+    <br>
+  <button class="btn btn-success" type="submit">Update</button>
+  <a class="btn btn-info" href="/">Return to All Pets</a>
+</form>
+
+{% endblock %}

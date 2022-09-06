@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Add Pet Form{% endblock %}
+{% block content %}
+
+<form action="/add", method="POST">
+<h2>Add a New Pet:</h2>
+{{form.hidden_tag()}}
+{% for field in form if field.widget.input_type != 'hidden'%}
+
+<div class='input-group-prepend'>
+  {{field.label(class_="mt-3 mr-2")}}
+  {{field(class_="input-group-text mt-3 mr-2")}}
+</div>
+
+{% endfor %}
+<br>
+<div>
+    <button class="btn btn-success" type="submit">Add</button>
+    <a class="btn btn-info" href="/">Return to All Pets</a>
+</div>
+
+</form>
+
+{% endblock %}
